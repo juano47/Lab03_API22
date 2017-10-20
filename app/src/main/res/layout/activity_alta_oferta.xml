@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="padula.delaiglesia.dam.isi.frsf.lab03.AltaOferta">
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="316dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Descripción"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginBottom="@dimen/activity_horizontal_margin">
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Req. Inglés"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="114dp"
+        android:layout_height="42dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="Precio/Hora"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="86dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="Horas"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+</LinearLayout>
+
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="316dp"
+        android:layout_height="29dp"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="314dp"
+        android:layout_height="31dp"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crear"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+</LinearLayout>
