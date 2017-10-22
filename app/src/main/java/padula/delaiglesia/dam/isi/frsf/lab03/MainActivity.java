@@ -1,5 +1,7 @@
 package padula.delaiglesia.dam.isi.frsf.lab03;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -19,6 +21,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static android.R.attr.id;
+
 public class MainActivity extends AppCompatActivity {
 
     private ListView listView;
@@ -27,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private Intent intentAltaOferta;
     private ArrayList<Trabajo> trabajosMockList;
     int ALTA_OFERTA=1;
+    private MiTareaAsincrona tareaAsincrona;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +92,10 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"La oferta ha sido descartada",Toast.LENGTH_LONG).show();
                 return true;
             case R.id.postularseOferta:
-                Toast.makeText(getApplicationContext(),"Usted se ha postulado a esta oferta",Toast.LENGTH_LONG).show();
+
+                tareaAsincrona= new MiTareaAsincrona();
+                tareaAsincrona.execute(this);
+
                 return true;
             default:
                 return super.onContextItemSelected(item);
