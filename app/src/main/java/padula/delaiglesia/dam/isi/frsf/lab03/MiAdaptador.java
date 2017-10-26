@@ -14,6 +14,8 @@ import org.w3c.dom.Text;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import padula.delaiglesia.dam.isi.frsf.lab03.dao.ITrabajoDAO;
+
 /**
  * Created by st on 19/09/2017.
  */
@@ -22,12 +24,24 @@ public class MiAdaptador extends BaseAdapter {
     LayoutInflater inflater;
     List<Trabajo> items;
     Context context;
+    ITrabajoDAO dao;
 
-    public MiAdaptador(Context context, List<Trabajo> items) {
+    public MiAdaptador(Context context, ITrabajoDAO _dao) {
         super();
-        this.items = items;
+        dao = _dao;
+        populateListFromDAO();
         this.context = context;
         inflater = LayoutInflater.from(context);
+    }
+
+    private void populateListFromDAO() {
+        this.items = dao.listaTrabajos();
+    }
+
+    @Override
+    public void notifyDataSetChanged(){
+        populateListFromDAO();
+        super.notifyDataSetChanged();
     }
 
     @Override

@@ -10,6 +10,11 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.util.List;
+
+import padula.delaiglesia.dam.isi.frsf.lab03.dao.ITrabajoDAO;
+import padula.delaiglesia.dam.isi.frsf.lab03.dao.TrabajoDAOSQLite;
+
 public class AltaOferta extends AppCompatActivity {
     Spinner spinnerCategorias;
     Spinner spinnerMonedas;
@@ -18,6 +23,7 @@ public class AltaOferta extends AppCompatActivity {
     EditText txtHoras;
     EditText txtPrecioHora;
     CheckBox checkbox;
+    ITrabajoDAO dao = new TrabajoDAOSQLite(AltaOferta.this);
 
     String[] monedas = {"USD","EUR","ARS","LIBRA","REAL"};
     private Intent i;
@@ -32,8 +38,9 @@ public class AltaOferta extends AppCompatActivity {
         txtPrecioHora = (EditText) findViewById(R.id.editText3);
         checkbox = (CheckBox) findViewById(R.id.checkBox);
 
+        List<Categoria> categorias = dao.listaCategoria();
         spinnerCategorias = (Spinner) findViewById(R.id.spinner);
-        ArrayAdapter adapterCategorias = new ArrayAdapter<Categoria>(this,android.R.layout.simple_spinner_item,Categoria.CATEGORIAS_MOCK);
+        ArrayAdapter adapterCategorias = new ArrayAdapter<Categoria>(this,android.R.layout.simple_spinner_item,categorias);
         spinnerCategorias.setAdapter(adapterCategorias);
 
         spinnerMonedas = (Spinner) findViewById(R.id.spinner2);

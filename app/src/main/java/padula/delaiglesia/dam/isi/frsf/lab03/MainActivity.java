@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import padula.delaiglesia.dam.isi.frsf.lab03.dao.TrabajoDAOSQLite;
+
 import static android.R.attr.id;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Trabajo> trabajosMockList;
     int ALTA_OFERTA=1;
     private MiTareaAsincrona tareaAsincrona;
+    private TrabajoDAOSQLite dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         trabajosMockList = new ArrayList<Trabajo>(Arrays.asList(Trabajo.TRABAJOS_MOCK));
 
+        dao = new TrabajoDAOSQLite(MainActivity.this);
         floatingButton = (FloatingActionButton) findViewById(R.id.fab);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -55,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         listView = (ListView) findViewById(R.id.listView);
-        adaptador = new MiAdaptador(this,trabajosMockList );
+        adaptador = new MiAdaptador(this,dao );
         listView.setAdapter(adaptador);
         registerForContextMenu(listView);
 
@@ -129,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode,Intent data){
         if(resultCode == RESULT_OK){
             Trabajo nuevoTrabajo = (Trabajo) data.getParcelableExtra("OFERTA");
-            trabajosMockList.add(nuevoTrabajo);
+            dao.crearOferta(nuevoTrabajo);
             adaptador.notifyDataSetChanged();
         }
         else{
