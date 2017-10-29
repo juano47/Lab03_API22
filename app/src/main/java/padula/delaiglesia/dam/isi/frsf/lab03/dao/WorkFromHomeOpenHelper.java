@@ -91,6 +91,8 @@ public class WorkFromHomeOpenHelper extends SQLiteOpenHelper {
 
 
     public long insertTrabajo(SQLiteDatabase db, Trabajo t) {
+        try{
+        db.beginTransaction();
         ContentValues cv = new ContentValues();
         cv.put("descripcion",t.getDescripcion());
         cv.put("horas", t.getHorasPresupuestadas());
@@ -100,7 +102,12 @@ public class WorkFromHomeOpenHelper extends SQLiteOpenHelper {
         cv.put("fechaEntrega",t.getFechaEntrega().toString());
         cv.put("categoriaID",t.getCategoria().getId());
 
-        return db.insert("Trabajo",null,cv);
+            long result = db.insertOrThrow("Trabajo",null,cv);
+            return result;
+        }
+        catch (Exception ex){
+            return -1;
+        }
     }
 
 }
