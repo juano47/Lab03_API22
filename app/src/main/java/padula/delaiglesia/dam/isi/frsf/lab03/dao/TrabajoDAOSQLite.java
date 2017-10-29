@@ -125,6 +125,10 @@ public class TrabajoDAOSQLite implements ITrabajoDAO {
 
     }
 
+    public void deleteTrabajo(long id){
+        helper.deleteTrabajo(db,id);
+    }
+
     public Categoria findByID(long _id){
         Cursor c = db.rawQuery("SELECT * FROM Categoria WHERE _ID = ?",new String[]{Long.toString(_id)});
 

@@ -93,6 +93,9 @@ public class MainActivity extends AppCompatActivity {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         switch (item.getItemId()) {
             case R.id.descartarOferta:
+                Trabajo t = adaptador.getItem(info.position);
+                dao.deleteTrabajo((long)t.getId());
+                adaptador.notifyDataSetChanged();
                 Toast.makeText(getApplicationContext(),"La oferta ha sido descartada",Toast.LENGTH_LONG).show();
                 return true;
             case R.id.postularseOferta:

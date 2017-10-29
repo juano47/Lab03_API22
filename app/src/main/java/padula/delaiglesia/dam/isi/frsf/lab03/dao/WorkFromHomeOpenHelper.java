@@ -103,10 +103,29 @@ public class WorkFromHomeOpenHelper extends SQLiteOpenHelper {
         cv.put("categoriaID",t.getCategoria().getId());
 
             long result = db.insertOrThrow("Trabajo",null,cv);
+            db.setTransactionSuccessful();
             return result;
         }
         catch (Exception ex){
             return -1;
+        }
+        finally{
+            db.endTransaction();
+
+        }
+    }
+
+    public void deleteTrabajo(SQLiteDatabase db,long id){
+        try{
+            db.beginTransaction();
+            db.delete("Trabajo","_ID = " + String.valueOf(id),null);
+            db.setTransactionSuccessful();
+        }
+        catch (Exception ex){
+            //
+        }
+        finally {
+            db.endTransaction();
         }
     }
 
