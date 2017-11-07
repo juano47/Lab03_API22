@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import padula.delaiglesia.dam.isi.frsf.lab03.dao.TrabajoDAOSQLite;
+import padula.delaiglesia.dam.isi.frsf.lab03.dao.TrabajoDaoJSON;
 
 import static android.R.attr.id;
 
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Trabajo> trabajosMockList;
     int ALTA_OFERTA=1;
     private MiTareaAsincrona tareaAsincrona;
-    private TrabajoDAOSQLite dao;
+    private TrabajoDaoJSON dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         trabajosMockList = new ArrayList<Trabajo>(Arrays.asList(Trabajo.TRABAJOS_MOCK));
 
-        dao = new TrabajoDAOSQLite(MainActivity.this);
+        dao = new TrabajoDaoJSON(MainActivity.this);
         floatingButton = (FloatingActionButton) findViewById(R.id.fab);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

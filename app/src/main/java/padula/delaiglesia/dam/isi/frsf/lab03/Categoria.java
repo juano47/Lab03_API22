@@ -4,6 +4,9 @@ package padula.delaiglesia.dam.isi.frsf.lab03;
         import android.os.Parcel;
         import android.os.Parcelable;
 
+        import org.json.JSONException;
+        import org.json.JSONObject;
+
         import java.util.ArrayList;
         import java.util.List;
 
@@ -95,4 +98,17 @@ public class Categoria implements Parcelable{
     public String toString(){
         return getDescripcion();
     }
+
+    public JSONObject toJSON() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("id", getId() );
+            jsonObject.put("descripcion", getDescripcion());
+            jsonObject.put("trabajos", getTrabajo());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
+    }
+
 }

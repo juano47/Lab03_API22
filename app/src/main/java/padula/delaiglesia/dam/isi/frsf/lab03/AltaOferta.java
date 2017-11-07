@@ -14,6 +14,7 @@ import java.util.List;
 
 import padula.delaiglesia.dam.isi.frsf.lab03.dao.ITrabajoDAO;
 import padula.delaiglesia.dam.isi.frsf.lab03.dao.TrabajoDAOSQLite;
+import padula.delaiglesia.dam.isi.frsf.lab03.dao.TrabajoDaoJSON;
 
 public class AltaOferta extends AppCompatActivity {
     Spinner spinnerCategorias;
@@ -23,7 +24,7 @@ public class AltaOferta extends AppCompatActivity {
     EditText txtHoras;
     EditText txtPrecioHora;
     CheckBox checkbox;
-    ITrabajoDAO dao = new TrabajoDAOSQLite(AltaOferta.this);
+
 
     String[] monedas = {"USD","EUR","ARS","LIBRA","REAL"};
     private Intent i;
@@ -32,6 +33,7 @@ public class AltaOferta extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alta_oferta);
+        ITrabajoDAO dao = new TrabajoDAOSQLite(AltaOferta.this);
         btnCrear = (Button) findViewById(R.id.button);
         txtDescripcion = (EditText) findViewById(R.id.editText);
         txtHoras = (EditText) findViewById(R.id.editText4);
