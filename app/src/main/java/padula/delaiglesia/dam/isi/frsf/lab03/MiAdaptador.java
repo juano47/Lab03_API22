@@ -12,6 +12,7 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import padula.delaiglesia.dam.isi.frsf.lab03.dao.ITrabajoDAO;
@@ -88,7 +89,9 @@ public class MiAdaptador extends BaseAdapter {
         holder.precioHora.setText(" $/Hora: " + df.format(getItem(i).getPrecioMaximoHora()));
 
         holder.fechaFin = (TextView) row.findViewById(R.id.fechaFin);
-        holder.fechaFin.setText("Fecha fin: " + getItem(i).getFechaEntrega().toString());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String fecha = dateFormat.format(getItem(i).getFechaEntrega());
+        holder.fechaFin.setText("Fecha fin: " + fecha);
 
         holder.requiereIngles = (CheckBox) row.findViewById(R.id.ingles);
         holder.requiereIngles.setChecked(getItem(i).getRequiereIngles());
